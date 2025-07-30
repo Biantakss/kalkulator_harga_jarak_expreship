@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('rides', function (Blueprint $table) {
             $table->id();
                 $table->string('name', 255);
-                $table->string('phone_number', 20);
-                $table->string('gender', 1)->nullable();
+                $table->string('phone_number', 200);
+                $table->string('gender', 111)->nullable();
                 $table->string('pickup_location', 255);
                 $table->string('dropoff_location', 255);
                 $table->decimal('distance');

@@ -10,39 +10,48 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 </head>
 
+
+
 <body>
     <div class="container mt-5">
         <form action="{{ route('ride.store') }}" method="POST" class="p-4 rounded shadow bg-white">
             @csrf
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama</label>
+                       <input type="text" name="name" id="name" class="form-control" required>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Nomor Whatsapp</label>
+                        <input type="number" name="phone_number" id="phone_number" class="form-control" step="0.1" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Jenis Kelamin</label>
+                            <select name="gender" id="gender" class="form-select @error('gender') is-invalid @enderror" required>
+                            <option value="">-- Pilih Jenis Kelamin --</option>
+                            <option value="P" {{ old('gender') === "P" ? 'selected' : '' }}>Perempuan</option>
+                            <option value="L" {{ old('gender') === "L" ? 'selected' : '' }}>Laki-laki</option>
+                        </select>
+                        @error('gender')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="pickup_location" class="form-label">Lokasi Jemput</label>
+                        <input type="text" name="pickup_location" id="pickup_location" class="form-control" required>
+                    </div>
+                </div>
 
-            <div class="mb-3">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" name="name" id="name" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="phone_number" class="form-label">Nomor Whatsapp</label>
-                <input type="text" name="phone_number" id="phone_number" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select name="gender" id="gender" class="form-select @error('gender') is-invalid @enderror" required>
-                  <option value="">-- Pilih Jenis Kelamin --</option>
-                  <option value="P" {{ old('gender') === "P" ? 'selected' : '' }}>Perempuan</option>
-                  <option value="L" {{ old('gender') === "L" ? 'selected' : '' }}>Laki-laki</option>
-                </select>
-                @error('gender')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label for="pickup_location" class="form-label">Lokasi Jemput</label>
-                <input type="text" name="pickup_location" id="pickup_location" class="form-control" required>
-            </div>
 
             <div class="mb-3">
                 <label for="dropoff_location" class="form-label">Tujuan</label>
