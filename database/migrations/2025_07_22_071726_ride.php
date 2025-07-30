@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
                 $table->string('name', 255);
                 $table->string('phone_number', 200);
-                $table->string('gender', 111)->nullable();
+                $table->string('gender', 1)->nullable();
                 $table->string('pickup_location', 255);
                 $table->string('dropoff_location', 255);
                 $table->decimal('distance');
