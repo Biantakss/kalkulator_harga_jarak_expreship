@@ -63,9 +63,16 @@
                 <input type="number" name="distance" id="distance" class="form-control" step="0.1" required>
             </div>
 
-            <div class="mb-3">
-                <label for="pickup_time" class="form-label">Pickup Time</label>
-                <input type="date" name="pickup_time" id="pickup_time" class="form-control" onchange="invoicedue(event);" required value="{{ old('pickup_time') }}">
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="pickup_date" class="form-label">Tanggal Jemput</label>
+                    <input type="date" name="pickup_date" id="pickup_date" class="form-control" required value="{{ old('pickup_date') }}">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="pickup_time" class="form-label">Jam Jemput</label>
+                    <input type="time" name="pickup_time" id="pickup_time" class="form-control" required value="{{ old('pickup_time') }}">
+                </div>
             </div>
 
             <div class="d-flex justify-content-end gap-2">
@@ -76,4 +83,17 @@
     </div>
 </body>
 
+
+<script>
+const startTime = document.getElementById("startTime");
+const valueSpan = document.getElementById("value");
+
+startTime.addEventListener(
+  "input",
+  () => {
+    valueSpan.innerText = startTime.value;
+  },
+  false,
+);
+  </script>
 </html>        

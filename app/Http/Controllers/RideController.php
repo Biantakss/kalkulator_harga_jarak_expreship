@@ -23,11 +23,13 @@ public function store(Request $request)
             'pickup_location' => 'required',
             'dropoff_location' => 'required',
             'distance' => 'required|numeric|min:0',
-            'pickup_time' => 'required|date',
+            'pickup_date' => 'required|date',
+            'pickup_time' => 'required',
         ]);
 
         $price = $this->calculatePrice($request->distance);
 
+        $pickupDateTime = $request->pickup_date . ' ' . $request->pickup_time;
         $ride = Ride::create([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
@@ -35,7 +37,7 @@ public function store(Request $request)
             'pickup_location' => $request->pickup_location,
             'dropoff_location' => $request->dropoff_location,
             'distance' => $request->distance,
-            'pickup_time' => $request->pickup_time,
+            'pickup_time' => $pickupDateTime,
             'price' => $price,
         ]);
 
